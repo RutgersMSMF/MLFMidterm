@@ -2,6 +2,24 @@ import yfinance as yf
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+def fetch_benchmark_data():
+    """
+    Returns Historical Price Data from Yahoo Finance
+
+    Output:
+    - Historical Price Data
+    """
+    current_date = datetime.today()
+    past_date = current_date - relativedelta(months = 60)
+
+    current_date = current_date.strftime('%Y-%m-%d')
+    past_date = past_date.strftime('%Y-%m-%d')
+
+    stock = yf.Ticker("SPY")   
+    benchmark_data = stock.history(start = past_date, end = current_date)
+
+    return benchmark_data
+
 def fetch_yfinance_data(ticker_symbols):
     """
     Returns Historical Price Data from Yahoo Finance 

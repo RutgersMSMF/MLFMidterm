@@ -1,8 +1,11 @@
+from sklearn.cluster import KMeans
 
-
-def get_clusters():
+def get_clusters(X):
     """
-    
+    Computes Clusters of Correlation Matrix
     """
 
-    return 0
+    kmeans = KMeans(n_clusters = 2, random_state = 0)
+    model = kmeans.fit(X)
+
+    return model
